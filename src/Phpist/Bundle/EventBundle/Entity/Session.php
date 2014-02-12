@@ -29,7 +29,7 @@ class Session
      * @var Event
      *
      * @ORM\ManyToOne(targetEntity="Event", inversedBy="sessions")
-     * @ORM\JoinColumn(name="event", referencedColumnName="id")
+     * @ORM\JoinColumn(name="event", referencedColumnName="id", nullable=true)
      */
     private $event;
 
@@ -65,7 +65,7 @@ class Session
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=255)
+     * @ORM\Column(name="status", type="string", columnDefinition="ENUM('active', 'passive', 'deleted')")
      */
     private $status;
 
