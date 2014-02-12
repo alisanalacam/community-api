@@ -66,9 +66,9 @@ class Session
     /**
      * @var string
      *
-     * @ORM\Column(name="embed_code", type="string", length=64)
+     * @ORM\Column(name="slide_embed_code", type="string", length=64)
      */
-    private $embed_code;
+    private $slide_embed_code;
 
     /**
      * @var string
@@ -203,19 +203,19 @@ class Session
     }
 
     /**
-     * @param string $embed_code
+     * @param string $slide_embed_code
      */
-    public function setEmbedCode($embed_code)
+    public function setSlideEmbedCode($slide_embed_code)
     {
-        $this->embed_code = $embed_code;
+        $this->slide_embed_code = $slide_embed_code;
     }
 
     /**
      * @return string
      */
-    public function getEmbedCode()
+    public function getSlideEmbedCode()
     {
-        return $this->embed_code;
+        return $this->slide_embed_code;
     }
 
     /**
