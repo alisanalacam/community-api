@@ -63,6 +63,13 @@ class Speaker
      */
     private $session;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="company", type="string", length=255)
+     */
+    private $company;
+
 
     /**
      * Get id
@@ -190,7 +197,7 @@ class Speaker
     }
 
     /**
-     * @param \Phpist\WebBundle\Entity\Session $session
+     * @param Session $session
      */
     public function setSession($session)
     {
@@ -198,12 +205,26 @@ class Speaker
     }
 
     /**
-     * @return \Phpist\WebBundle\Entity\Session
+     * @return Session
      */
     public function getSession()
     {
         return $this->session;
     }
 
+    /**
+     * @param string $company
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+    }
 
+    /**
+     * @return string
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
 }
