@@ -4,5 +4,5 @@ phpist_user:
 
 phpist_event:
     resource: "@PhpistEventBundle/Resources/config/routing.yml"
-    prefix:   /events
+    prefix:   /
 

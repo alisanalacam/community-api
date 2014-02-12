@@ -1,9 +1,13 @@
 phpist_event_get:
-    pattern: /{id}
+    pattern: /events/{id}
     defaults: { _controller: PhpistEventBundle:Event:get }
     methods: [GET]
 
 phpist_event_get_all:
-    pattern: /
+    pattern: /events
     defaults: { _controller: PhpistEventBundle:Event:getAll }
+    methods: [GET]
+phpist_session_get:
+    pattern: /sessions/{id}
+    defaults: { _controller: PhpistEventBundle:Session:get }
     methods: [GET]
