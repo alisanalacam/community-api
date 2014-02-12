@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Speaker
+ * Class Event
  * @package Phpist\Bundle\EventBundle\Repository
  */
 
@@ -10,7 +10,7 @@ namespace Phpist\Bundle\EventBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class Speaker extends EntityRepository
+class EventRepository extends EntityRepository
 {
 
 } 
