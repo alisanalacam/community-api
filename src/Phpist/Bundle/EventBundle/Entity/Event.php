@@ -85,6 +85,12 @@ class Event
      */
     private $sessions;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ticket_sale_url", type="string", length=255)
+     */
+    private $ticketSaleUrl;
 
     /**
      * Get id
@@ -285,5 +291,19 @@ class Event
         return $this->updatedDate;
     }
 
+    /**
+     * @param string $ticketSaleUrl
+     */
+    public function setTicketSaleUrl($ticketSaleUrl)
+    {
+        $this->ticketSaleUrl = $ticketSaleUrl;
+    }
 
+    /**
+     * @return string
+     */
+    public function getTicketSaleUrl()
+    {
+        return $this->ticketSaleUrl;
+    }
 }
