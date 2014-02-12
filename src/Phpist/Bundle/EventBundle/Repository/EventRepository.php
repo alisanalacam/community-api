@@ -9,6 +9,7 @@ namespace Phpist\Bundle\EventBundle\Repository;
 
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query;
 use Phpist\Bundle\EventBundle\Entity\Event;
 
 class EventRepository extends EntityRepository
@@ -24,7 +25,7 @@ class EventRepository extends EntityRepository
             ->setParameters(
                 array('id' => $id, 'status' => Event::STATUS_ACTIVE)
             )
-            ->getArrayResult();
+            ->getSingleResult(Query::HYDRATE_ARRAY);
     }
 
     public function findAllWithDetails()

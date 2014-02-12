@@ -2,6 +2,7 @@
 
 namespace Phpist\Bundle\EventBundle\Controller;
 
+use Doctrine\ORM\NoResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -10,15 +11,16 @@ class EventController extends Controller
 
     public function getAction($id)
     {
-        $event = $this->getDoctrine()->getRepository('PhpistEventBundle:Event')->findOneWithDetails($id);
+        try {
+            $event = $this->getDoctrine()->getRepository('PhpistEventBundle:Event')->findOneWithDetails($id);
+            return new JsonResponse(
+                $event
+            );
 
-        if (empty($event)) {
+        } catch (NoResultException $e) {
             throw $this->createNotFoundException('Event not found');
-        }
 
-        return new JsonResponse(
-            $event
-        );
+        }
     }
 
     public function getAllAction()
