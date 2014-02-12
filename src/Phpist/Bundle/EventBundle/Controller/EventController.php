@@ -12,14 +12,11 @@ class EventController extends Controller
     public function getAction($id)
     {
         try {
-            $event = $this->getDoctrine()->getRepository('PhpistEventBundle:Event')->findOneWithDetails($id);
             return new JsonResponse(
-                $event
+                $this->getDoctrine()->getRepository('PhpistEventBundle:Event')->findOneWithDetails($id)
             );
-
         } catch (NoResultException $e) {
             throw $this->createNotFoundException('Event not found');
-
         }
     }
 
