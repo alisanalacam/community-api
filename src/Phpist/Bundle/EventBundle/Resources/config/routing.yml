@@ -1,3 +1,9 @@
-phpist_event_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: PhpistEventBundle:Default:index }
+phpist_event_get:
+    pattern: /{id}
+    defaults: { _controller: PhpistEventBundle:Event:get }
+    methods: [GET]
+
+phpist_event_get_all:
+    pattern: /
+    defaults: { _controller: PhpistEventBundle:Event:getAll }
+    methods: [GET]
