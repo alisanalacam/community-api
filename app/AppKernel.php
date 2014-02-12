@@ -18,9 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Phpist\Bundle\EventBundle\PhpistEventBundle(),
-            new Phpist\Bundle\UserBundle\PhpistUserBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Phpist\Bundle\UserBundle\PhpistUserBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
