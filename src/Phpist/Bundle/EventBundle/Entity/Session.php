@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Session
  *
  * @ORM\Table(name="event_session")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Phpist\Bundle\EventBundle\Repository\Session")
  */
 class Session
 {

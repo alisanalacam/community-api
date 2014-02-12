@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mstfleri
- * Date: 11/02/14
- * Time: 23:54
- */
 
 namespace Phpist\Bundle\UserBundle\Entity;
 

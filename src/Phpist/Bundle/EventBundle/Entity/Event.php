@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Event
  *
  * @ORM\Table(name="event")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Phpist\Bundle\EventBundle\Repository\Event")
  */
 class Event
 {
@@ -50,6 +50,20 @@ class Event
      * @ORM\Column(name="endDate", type="datetime")
      */
     private $endDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdDate", type="datetime")
+     */
+    private $createdDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedDate", type="datetime")
+     */
+    private $updatedDate;
 
     /**
      * @var string
@@ -237,6 +251,38 @@ class Event
     public function getSessions()
     {
         return $this->sessions;
+    }
+
+    /**
+     * @param \DateTime $createdDate
+     */
+    public function setCreatedDate($createdDate)
+    {
+        $this->createdDate = $createdDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
+    }
+
+    /**
+     * @param \DateTime $updatedDate
+     */
+    public function setUpdatedDate($updatedDate)
+    {
+        $this->updatedDate = $updatedDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedDate()
+    {
+        return $this->updatedDate;
     }
 
 
