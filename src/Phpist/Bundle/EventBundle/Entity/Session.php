@@ -62,6 +62,14 @@ class Session
      */
     private $subject;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="embed_code", type="string", length=64)
+     */
+    private $embed_code;
+
     /**
      * @var string
      *
@@ -192,6 +200,22 @@ class Session
     public function getSubject()
     {
         return $this->subject;
+    }
+
+    /**
+     * @param string $embed_code
+     */
+    public function setEmbedCode($embed_code)
+    {
+        $this->embed_code = $embed_code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmbedCode()
+    {
+        return $this->embed_code;
     }
 
     /**
