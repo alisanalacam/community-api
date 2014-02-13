@@ -93,6 +93,12 @@ class Event
     private $ticketSaleUrl;
 
     /**
+     * @var string
+     * @ORM\Column(name="address", type="string", length=1000)
+     */
+    private $address;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -305,5 +311,21 @@ class Event
     public function getTicketSaleUrl()
     {
         return $this->ticketSaleUrl;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
     }
 }
