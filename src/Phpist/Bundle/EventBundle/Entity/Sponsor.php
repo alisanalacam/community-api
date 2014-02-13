@@ -2,6 +2,7 @@
 
 namespace Phpist\Bundle\EventBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Sponsor
 {
-    const SPONSORTYPE_GOLD     = 'gold';
-    const SPONSORTYPE_PLATIN   = 'platin';
-    const SPONSORTYPE_STANDARD = 'standard';
+    const TYPE_GOLD     = 'gold';
+    const TYPE_PLATIN   = 'platin';
+    const TYPE_STANDARD = 'standard';
 
     /**
      * @var integer
@@ -28,30 +29,30 @@ class Sponsor
     /**
      * @var string
      *
-     * @ORM\Column(name="sponsorName", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $sponsorName;
+    private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sponsorUrl", type="string", length=255)
+     * @ORM\Column(name="url", type="string", length=255)
      */
-    private $sponsorUrl;
+    private $url;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sponsorLogo", type="string", length=255)
+     * @ORM\Column(name="logo", type="string", length=255)
      */
-    private $sponsorLogo;
+    private $logo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sponsorType", type="string", columnDefinition="ENUM('gold', 'platin', 'standard')")
+     * @ORM\Column(name="type", type="string", columnDefinition="ENUM('gold', 'platin', 'standard')")
      */
-    private $sponsorType;
+    private $type;
 
     /**
      * @var string
@@ -75,6 +76,18 @@ class Sponsor
     private $updatedDate;
 
     /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="Event", inversedBy="sponsors")
+     * @ORM\JoinTable(name="event_sponsor")
+     */
+    private $events;
+
+
+    public function __construct() {
+        $this->events = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer
@@ -85,109 +98,109 @@ class Sponsor
     }
 
     /**
-     * Set sponsorName
+     * Set name
      *
-     * @param string $sponsorName
+     * @param string $name
      * @return Sponsor
      */
-    public function setSponsorName($sponsorName)
+    public function setName($name)
     {
-        $this->sponsorName = $sponsorName;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get sponsorName
+     * Get name
      *
      * @return string
      */
-    public function getSponsorName()
+    public function getName()
     {
-        return $this->sponsorName;
+        return $this->name;
     }
 
     /**
-     * Set sponsorUrl
+     * Set url
      *
-     * @param string $sponsorUrl
+     * @param string $url
      * @return Sponsor
      */
-    public function setSponsorUrl($sponsorUrl)
+    public function setUrl($url)
     {
-        $this->sponsorUrl = $sponsorUrl;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get sponsorUrl
+     * Get url
      *
      * @return string
      */
-    public function getSponsorUrl()
+    public function getUrl()
     {
-        return $this->sponsorUrl;
+        return $this->url;
     }
 
     /**
-     * Set sponsorLogo
+     * Set logo
      *
-     * @param string $sponsorLogo
+     * @param string $logo
      * @return Sponsor
      */
-    public function setSponsorLogo($sponsorLogo)
+    public function setLogo($logo)
     {
-        $this->sponsorLogo = $sponsorLogo;
+        $this->logo = $logo;
 
         return $this;
     }
 
     /**
-     * Get sponsorLogo
+     * Get logo
      *
      * @return string
      */
-    public function getSponsorLogo()
+    public function getLogo()
     {
-        return $this->sponsorLogo;
+        return $this->logo;
     }
 
     /**
-     * Set sponsorType
+     * Set type
      *
-     * @param $sponsorType
+     * @param $type
      * @return $this
      * @throws \InvalidArgumentException
      */
-    public function setSponsorType($sponsorType)
+    public function setType($type)
     {
-        if (!in_array($sponsorType, $this->getSponsorTypeList())) {
+        if (!in_array($type, $this->getTypeList())) {
             throw new \InvalidArgumentException('Invalid status');
         }
-        $this->sponsorType = $sponsorType;
+        $this->type = $type;
 
         return $this;
 
     }
 
     /**
-     * Get sponsorType
+     * Get type
      *
      * @return string
      */
-    public function getSponsorType()
+    public function getType()
     {
-        return $this->sponsorType;
+        return $this->type;
     }
 
 
-    public function getSponsorTypeList()
+    public function getTypeList()
     {
         return array(
-            self::SPONSORTYPE_GOLD,
-            self::SPONSORTYPE_PLATIN,
-            self::SPONSORTYPE_STANDARD
+            self::TYPE_GOLD,
+            self::TYPE_PLATIN,
+            self::TYPE_STANDARD
         );
     }
 
@@ -244,5 +257,38 @@ class Sponsor
     public function getUpdatedDate()
     {
         return $this->updatedDate;
+    }
+
+    /**
+     * Add events
+     *
+     * @param \Phpist\Bundle\EventBundle\Entity\Event $events
+     * @return Sponsor
+     */
+    public function addEvent(\Phpist\Bundle\EventBundle\Entity\Event $events)
+    {
+        $this->events[] = $events;
+    
+        return $this;
+    }
+
+    /**
+     * Remove events
+     *
+     * @param \Phpist\Bundle\EventBundle\Entity\Event $events
+     */
+    public function removeEvent(\Phpist\Bundle\EventBundle\Entity\Event $events)
+    {
+        $this->events->removeElement($events);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvents()
+    {
+        return $this->events;
     }
 }
