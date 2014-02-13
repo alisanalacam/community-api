@@ -93,6 +93,17 @@ class Event
     private $ticketSaleUrl;
 
     /**
+    * @var ArrayCollection
+    * @ORM\ManyToMany(targetEntity="Sponsor", mappedBy="events")
+    */
+    private $sponsors;
+
+
+    public function __construct() {
+ 	    $this->sponsors = new ArrayCollection();
+	}
+
+    /**
      * Get id
      *
      * @return integer 
@@ -305,5 +316,37 @@ class Event
     public function getTicketSaleUrl()
     {
         return $this->ticketSaleUrl;
+    }
+
+    /**
+    * Add sponsors
+    *
+    * @param \Phpist\Bundle\EventBundle\Entity\Sponsor $sponsors
+    * @return Event
+    */
+   public function addSponsor(\Phpist\Bundle\EventBundle\Entity\Sponsor $sponsors)
+   {
+       $this->sponsors[] = $sponsors;
+   
+       return $this;
+    }
+
+    /**
+    * Remove sponsors
+    *
+    * @param \Phpist\Bundle\EventBundle\Entity\Sponsor $sponsors
+    */
+    public function removeEvent(\Phpist\Bundle\EventBundle\Entity\Sponsor $sponsors)
+    {
+        $this->sponsors->removeElement($sponsors);
+ 	}
+    /**
+    * Get sponsors
+    *
+    * @return \Doctrine\Common\Collections\Collection 
+    */
+    public function getSponsors()
+    {
+        return $this->sponsors;
     }
 }
