@@ -318,36 +318,4 @@ class Event
         return $this->ticketSaleUrl;
     }
 
-    /**
-     * Add sponsors
-     *
-     * @param \Phpist\Bundle\EventBundle\Entity\Sponsor $sponsors
-     * @return Event
-     */
-    public function addSponsor(\Phpist\Bundle\EventBundle\Entity\Sponsor $sponsors)
-    {
-        $this->sponsors[] = $sponsors;
-    
-        return $this;
-    }
-
-    /**
-     * Remove sponsors
-     *
-     * @param \Phpist\Bundle\EventBundle\Entity\Sponsor $sponsors
-     */
-    public function removeSponsor(\Phpist\Bundle\EventBundle\Entity\Sponsor $sponsors)
-    {
-        $this->sponsors->removeElement($sponsors);
-    }
-
-    /**
-     * Get sponsors
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSponsors()
-    {
-        return $this->sponsors;
-    }
 }
