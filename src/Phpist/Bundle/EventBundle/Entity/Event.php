@@ -99,6 +99,12 @@ class Event
     private $address;
 
     /**
+     * @var string
+     * @ORM\Column(name="location", type="string", length=255)
+     */
+    private $location;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -327,5 +333,21 @@ class Event
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * @param string $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
     }
 }
