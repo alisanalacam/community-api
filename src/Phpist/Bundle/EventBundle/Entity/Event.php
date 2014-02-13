@@ -105,6 +105,19 @@ class Event
     private $location;
 
     /**
+     * @var decimal
+     * @ORM\Column(name="latitude", type="decimal", precision=18, scale=12)
+     */
+    private $latitude;
+
+
+    /**
+     * @var decimal
+     * @ORM\Column(name="longitude", type="decimal", precision=18, scale=12)
+     */
+    private $longitude;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -349,5 +362,37 @@ class Event
     public function getLocation()
     {
         return $this->location;
+    }
+
+    /**
+     * @param \Phpist\Bundle\EventBundle\Entity\decimal $latitude
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+    }
+
+    /**
+     * @return \Phpist\Bundle\EventBundle\Entity\decimal
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @param \Phpist\Bundle\EventBundle\Entity\decimal $longitude
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+    }
+
+    /**
+     * @return \Phpist\Bundle\EventBundle\Entity\decimal
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
     }
 }
