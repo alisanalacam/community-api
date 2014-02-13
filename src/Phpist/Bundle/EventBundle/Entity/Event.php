@@ -93,6 +93,31 @@ class Event
     private $ticketSaleUrl;
 
     /**
+     * @var string
+     * @ORM\Column(name="address", type="string", length=1000)
+     */
+    private $address;
+
+    /**
+     * @var string
+     * @ORM\Column(name="location", type="string", length=255)
+     */
+    private $location;
+
+    /**
+     * @var decimal
+     * @ORM\Column(name="latitude", type="decimal", precision=18, scale=12)
+     */
+    private $latitude;
+
+
+    /**
+     * @var decimal
+     * @ORM\Column(name="longitude", type="decimal", precision=18, scale=12)
+     */
+    private $longitude;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -305,5 +330,69 @@ class Event
     public function getTicketSaleUrl()
     {
         return $this->ticketSaleUrl;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param \Phpist\Bundle\EventBundle\Entity\decimal $latitude
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+    }
+
+    /**
+     * @return \Phpist\Bundle\EventBundle\Entity\decimal
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @param \Phpist\Bundle\EventBundle\Entity\decimal $longitude
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+    }
+
+    /**
+     * @return \Phpist\Bundle\EventBundle\Entity\decimal
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
     }
 }
