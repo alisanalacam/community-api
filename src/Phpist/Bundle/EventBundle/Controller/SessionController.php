@@ -20,4 +20,18 @@ class SessionController extends Controller
         }
     }
 
+    public function getAllAction(){
+
+        $sessions = $this->getDoctrine()->getRepository('PhpistEventBundle:Session')->findAllWithDetails();
+
+        if (empty($sessions)) {
+            throw $this->createNotFoundException('There is no session at all.');
+        }
+
+        return new JsonResponse(
+            $sessions
+        );
+
+    }
+
 }

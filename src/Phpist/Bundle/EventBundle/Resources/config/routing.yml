@@ -7,6 +7,11 @@ phpist_event_get_all:
     pattern: /events
     defaults: { _controller: PhpistEventBundle:Event:getAll }
     methods: [GET]
+
+phpist_session_get_all:
+    pattern: /sessions
+    defaults: { _controller: PhpistEventBundle:Session:getAll }
+    methods: [GET]
 phpist_session_get:
     pattern: /sessions/{id}
     defaults: { _controller: PhpistEventBundle:Session:get }

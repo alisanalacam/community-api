@@ -23,5 +23,14 @@ class SessionRepository extends EntityRepository
             ->setParameters(array('id' => $id, 'status' => Session::STATUS_ACTIVE))
             ->getSingleResult(Query::HYDRATE_ARRAY);
     }
-
+    public function findAllWithDetails()
+    {
+        return $this->getEntityManager()->createQuery(
+            'SELECT se FROM PhpistEventBundle:Session se WHERE se.status = :status ORDER BY se.startDate DESC')
+            ->setParameters(
+                array('status' => Session::STATUS_ACTIVE)
+            )
+            ->setMaxResults(10)
+            ->getArrayResult();
+    }
 } 
