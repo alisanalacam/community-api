@@ -69,6 +69,13 @@ class Speaker
      * @ORM\Column(name="company", type="string", length=255)
      */
     private $company;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="biography", type="string", length=511)
+     */
+    private $biography;
 
 
     /**
@@ -226,5 +233,21 @@ class Speaker
     public function getCompany()
     {
         return $this->company;
+    }
+    
+    /**
+     * @param string $biography
+     */
+    public function setBiography($biography)
+    {
+        $this->biography = $biography;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBiography()
+    {
+        return $this->biography;
     }
 }
