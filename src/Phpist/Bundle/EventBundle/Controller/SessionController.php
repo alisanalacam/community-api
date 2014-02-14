@@ -3,6 +3,7 @@
 namespace Phpist\Bundle\EventBundle\Controller;
 
 use Doctrine\ORM\NoResultException;
+use Phpist\Bundle\EventBundle\Repository\SessionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -11,18 +12,23 @@ class SessionController extends Controller
 
     public function getAction($id)
     {
+        /** @var SessionRepository $sessionRepository */
+        $sessionRepository = $this->container->get('phpist_event.repository.session_repository');
         try {
             return new JsonResponse(
-                $this->getDoctrine()->getRepository('PhpistEventBundle:Session')->findOne($id)
+                $sessionRepository->findOne($id)
             );
         } catch (NoResultException $e) {
             throw $this->createNotFoundException('Session not found');
         }
     }
 
-    public function getAllAction(){
+    public function getAllAction()
+    {
+        /** @var SessionRepository $sessionRepository */
+        $sessionRepository = $this->container->get('phpist_event.repository.session_repository');
 
-        $sessions = $this->getDoctrine()->getRepository('PhpistEventBundle:Session')->findAllWithDetails();
+        $sessions = $sessionRepository->findAllWithDetails();
 
         if (empty($sessions)) {
             throw $this->createNotFoundException('There is no session at all.');
@@ -31,7 +37,5 @@ class SessionController extends Controller
         return new JsonResponse(
             $sessions
         );
-
     }
-
 }
