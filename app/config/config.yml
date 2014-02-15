@@ -71,3 +71,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Phpist\Bundle\UserBundle\Entity\User
+
+services:
+    kernel.listener.generic_exception_listener:
+        class: Phpist\Bundle\EventBundle\EventListener\EventExceptionListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
