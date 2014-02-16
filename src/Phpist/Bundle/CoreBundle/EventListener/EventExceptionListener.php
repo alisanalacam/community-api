@@ -1,6 +1,6 @@
 <?php
 
-namespace Phpist\Bundle\EventBundle\EventListener;
+namespace Phpist\Bundle\CoreBundle\EventListener;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
