@@ -93,6 +93,30 @@ class Event
     private $ticketSaleUrl;
 
     /**
+     * @var string
+     * @ORM\Column(name="address", type="string", length=1000)
+     */
+    private $address;
+
+    /**
+     * @var string
+     * @ORM\Column(name="location", type="string", length=255)
+     */
+    private $location;
+
+    /**
+     * @var float
+     * @ORM\Column(name="latitude", type="decimal", precision=18, scale=12)
+     */
+    private $latitude;
+
+    /**
+     * @var float
+     * @ORM\Column(name="longitude", type="decimal", precision=18, scale=12)
+     */
+    private $longitude;
+    
+    /**
      * @var ArrayCollection
      * @ORM\ManyToMany(targetEntity="Sponsor", inversedBy="events")
      * @ORM\JoinTable(name="event_sponsor")
@@ -316,6 +340,70 @@ class Event
     public function getTicketSaleUrl()
     {
         return $this->ticketSaleUrl;
+    }
+    
+     /**
+     * @param string $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param float
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @param float
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
     }
 
     /**
