@@ -1,0 +1,8 @@
+parameters:
+#    phpist_core.example.class: Phpist\Bundle\CoreBundle\Example
+
+services:
+    kernel.listener.generic_exception_listener:
+        class: Phpist\Bundle\CoreBundle\EventListener\EventExceptionListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
